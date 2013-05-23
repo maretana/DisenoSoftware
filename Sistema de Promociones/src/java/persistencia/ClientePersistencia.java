@@ -21,9 +21,14 @@ public class ClientePersistencia implements JDBCProperties{
     
     public ClientePersistencia(){
         try {
+            Class.forName("com.mysql.jdbc.Driver");//Carga el driver del motor de BD en el servidor
             this._conexion = DriverManager.getConnection(CONNECTION_STRING, USERNAME, PASSWORD);
         } catch (SQLException ex) {
             System.err.println("Imposible hacer conexion con la Base de Datos.");
+            System.err.println(ex.getMessage());
+            ex.printStackTrace();
+            this._conexion = null;
+        } catch (ClassNotFoundException ex) {
             System.err.println(ex.getMessage());
             this._conexion = null;
         }//fin catch
@@ -53,7 +58,7 @@ public class ClientePersistencia implements JDBCProperties{
         }//fin try
         catch(Exception e){
             System.err.println("Error con la conexion a la BD");
-            System.err.println(e.getMessage());
+            e.printStackTrace();
             return null;
         }//fin catch
     }//fin buscar cliente por identificacion
