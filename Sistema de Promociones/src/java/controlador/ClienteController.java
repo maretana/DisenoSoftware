@@ -1,5 +1,6 @@
 package controlador;
 
+import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -17,7 +18,7 @@ public class ClienteController {
     public ClienteController(){}
     
     @RequestMapping(value = "/cliente/buscarporid", method = RequestMethod.GET)
-    public String buscarClientePorID(String pID){
-        return "index";
+    public String buscarClientePorID(HttpServletRequest request){
+        return "redirect:/index?pID=" + request.getParameter("identificacion");
     }//fin buscarClientePorID
 }
