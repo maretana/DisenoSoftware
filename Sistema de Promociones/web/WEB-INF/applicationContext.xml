@@ -22,6 +22,6 @@
     <!-- ADD PERSISTENCE SUPPORT HERE (jpa, hibernate, etc) -->
     
     <!-- Para detectar los servicios que usan los controladores -->
-    <context:component-scan ase-package="servicio"/>
+    <context:component-scan base-package="servicio"/>
 
 </beans>
