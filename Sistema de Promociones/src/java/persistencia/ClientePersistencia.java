@@ -26,7 +26,6 @@ public class ClientePersistencia implements JDBCProperties{
         } catch (SQLException ex) {
             System.err.println("Imposible hacer conexion con la Base de Datos.");
             System.err.println(ex.getMessage());
-            ex.printStackTrace();
             this._conexion = null;
         } catch (ClassNotFoundException ex) {
             System.err.println(ex.getMessage());
@@ -58,7 +57,7 @@ public class ClientePersistencia implements JDBCProperties{
         }//fin try
         catch(Exception e){
             System.err.println("Error con la conexion a la BD");
-            e.printStackTrace();
+            System.err.println(e.getMessage());
             return null;
         }//fin catch
     }//fin buscar cliente por identificacion
