@@ -21,7 +21,7 @@ public class ClientePersistencia implements JDBCProperties{
     
     public ClientePersistencia(){
         try {
-            Class.forName("com.mysql.jdbc.Driver");//Carga el driver del motor de BD en el servidor
+            Class.forName(DRIVER);//Carga el driver del motor de BD en el servidor
             this._conexion = DriverManager.getConnection(CONNECTION_STRING, USERNAME, PASSWORD);
         } catch (SQLException ex) {
             System.err.println("Imposible hacer conexion con la Base de Datos.");
