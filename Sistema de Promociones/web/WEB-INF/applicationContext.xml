@@ -20,5 +20,8 @@
     p:password="${jdbc.password}" /-->
 
     <!-- ADD PERSISTENCE SUPPORT HERE (jpa, hibernate, etc) -->
+    
+    <!-- Para detectar los servicios que usan los controladores -->
+    <context:component-scan ase-package="servicio"/>
 
 </beans>
