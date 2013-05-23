@@ -14,8 +14,11 @@ public class Cliente {
     public Cliente() {
     }//fin constructor
 
-    public Cliente(String identificacion) {
-        this._identificacion = identificacion;
+    public Cliente(String pNombre, String pApellido1, String pApellido2, String pIdentificacion) {
+        this._nombre = pNombre;
+        this._apellido1 = pApellido1;
+        this._apellido2 = pApellido2;
+        this._identificacion = pIdentificacion;
     }//fin constructor
     
     //<editor-fold defaultstate="collapsed" desc="Getters y Setters">
