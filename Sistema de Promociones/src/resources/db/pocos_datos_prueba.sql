@@ -1,6 +1,6 @@
-/* Para esta prueba van a insertarse 100 empresas con una promoción cada una.
- * Cada promoción va a tener 50 prodcutos y 30 premios.
- * Como cada empresa sólo tiene una promoción, no se considera la posibilidad
+/* Para esta prueba van a insertarse 100 empresas con una promociï¿½n cada una.
+ * Cada promociï¿½n va a tener 50 prodcutos y 30 premios.
+ * Como cada empresa sï¿½lo tiene una promociï¿½n, no se considera la posibilidad
  * de usar un producto ya registrado en la BD.
  * Cada empresa tiene un encargado.
  * NOTA: Todas las empresas van a quedar registradas en la ciudad con el PK = 1.
@@ -22,11 +22,11 @@ CREATE PROCEDURE llenarConPocosDatos()
 		WHILE contador <= 100 DO
 			INSERT Personas(nombre, apellido1) VALUES ('Encargado', CONCAT('Empresa',contador));
 			SELECT LAST_INSERT_ID() INTO encargado_id;
-			INSERT Direcciones(detalles, idCiudad) VALUES (CONCAT('Detalles de la dirección de la Empresa',contador),1);
+			INSERT Direcciones(detalles, idCiudad) VALUES (CONCAT('Detalles de la direcciï¿½n de la Empresa',contador),1);
 			SELECT LAST_INSERT_ID() INTO direccion_id;
 			INSERT INTO Empresas(nombre,usuario,password,idEncargado,idDireccion) VALUES (CONCAT('Empresa',contador),'usuario','password',encargado_id,direccion_id);
 			SELECT LAST_INSERT_ID() INTO empresa_id;
-			INSERT INTO Promociones (reglamento, inicio, fin, vigencia_puntos, idEmpresa) VALUES ('url reglamento promocion','2013-05-22','2013-10-25',60,empresa_id);
+			INSERT INTO Promociones (nombre, reglamento, inicio, fin, vigencia_puntos, idEmpresa) VALUES (CONCAT('Promocion',contador),'url reglamento promocion','2013-05-22','2013-10-25',60,empresa_id);
 			SELECT LAST_INSERT_ID() INTO promocion_id;
 			SET productos = 1;
 			WHILE productos <= 50 DO

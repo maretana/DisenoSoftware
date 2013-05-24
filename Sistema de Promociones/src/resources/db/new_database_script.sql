@@ -65,11 +65,11 @@ DROP TABLE IF EXISTS `sys_promo`.`Clientes` ;
 
 CREATE  TABLE IF NOT EXISTS `sys_promo`.`Clientes` (
   `idCliente` INT NOT NULL AUTO_INCREMENT ,
-  `Identificacion` VARCHAR(45) NOT NULL ,
+  `identificacion` VARCHAR(45) NOT NULL ,
   `idPersona` INT NOT NULL ,
   PRIMARY KEY (`idCliente`) ,
   INDEX `fk_Clientes_Personas1_idx` (`idPersona` ASC) ,
-  UNIQUE INDEX `Identificación_UNIQUE` (`Identificacion` ASC) ,
+  UNIQUE INDEX `Identificación_UNIQUE` (`identificacion` ASC) ,
   CONSTRAINT `fk_Clientes_Personas1`
     FOREIGN KEY (`idPersona` )
     REFERENCES `sys_promo`.`Personas` (`idPersona` )
@@ -135,7 +135,7 @@ DROP TABLE IF EXISTS `sys_promo`.`Direcciones` ;
 
 CREATE  TABLE IF NOT EXISTS `sys_promo`.`Direcciones` (
   `idDireccion` INT NOT NULL AUTO_INCREMENT ,
-  `Detalles` VARCHAR(200) NOT NULL ,
+  `detalles` VARCHAR(200) NOT NULL ,
   `idCiudad` INT NOT NULL ,
   PRIMARY KEY (`idDireccion`) ,
   INDEX `fk_Direcciones_Ciudad1_idx` (`idCiudad` ASC) ,
@@ -182,6 +182,7 @@ DROP TABLE IF EXISTS `sys_promo`.`Promociones` ;
 
 CREATE  TABLE IF NOT EXISTS `sys_promo`.`Promociones` (
   `idPromocion` INT NOT NULL AUTO_INCREMENT ,
+  `nombre` VARCHAR(100) NOT NULL ,
   `reglamento` VARCHAR(50) NOT NULL ,
   `inicio` DATETIME NOT NULL ,
   `fin` DATETIME NOT NULL ,
