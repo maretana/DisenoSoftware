@@ -350,6 +350,7 @@ DROP TABLE IF EXISTS `sys_promo`.`DetallesCompraCliente` ;
 
 CREATE  TABLE IF NOT EXISTS `sys_promo`.`DetallesCompraCliente` (
   `idDetalle` INT NOT NULL AUTO_INCREMENT ,
+  `cantidad` INT NOT NULL ,
   `idHistorialComprasClientes` INT NOT NULL ,
   `idProducto` INT NOT NULL ,
   PRIMARY KEY (`idDetalle`) ,
