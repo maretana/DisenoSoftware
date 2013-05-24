@@ -14,7 +14,7 @@ DELIMITER ;
 DROP PROCEDURE IF EXISTS contarPuntosClientePorPromocionPorEmpresa;
 
 DELIMITER $$
-/*Busca los puntos que tiene*/
+/*Busca los puntos que tiene un cliente en cada promocion de cada empresa.*/
 CREATE PROCEDURE contarPuntosClientePorPromocionPorEmpresa(IN pIdentificacion VARCHAR(45))
     BEGIN
         SELECT SUM(DCC.cantidad*PP.puntos) puntos, P.nombre promocion, E.nombre empresa FROM Clientes C
