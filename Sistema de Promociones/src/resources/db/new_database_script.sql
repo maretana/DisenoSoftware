@@ -336,6 +336,7 @@ CREATE  TABLE IF NOT EXISTS `sys_promo`.`HistorialComprasClientes` (
   `idCliente` INT NOT NULL ,
   PRIMARY KEY (`idHistorialComprasClientes`) ,
   INDEX `fk_HistorialComprasClientes_Clientes1_idx` (`idCliente` ASC) ,
+  UNIQUE INDEX `codigo_UNIQUE` (`codigo` ASC) ,
   CONSTRAINT `fk_HistorialComprasClientes_Clientes1`
     FOREIGN KEY (`idCliente` )
     REFERENCES `sys_promo`.`Clientes` (`idCliente` )
