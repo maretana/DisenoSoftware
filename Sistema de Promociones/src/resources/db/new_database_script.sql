@@ -332,6 +332,7 @@ DROP TABLE IF EXISTS `sys_promo`.`HistorialComprasClientes` ;
 CREATE  TABLE IF NOT EXISTS `sys_promo`.`HistorialComprasClientes` (
   `idHistorialComprasClientes` INT NOT NULL AUTO_INCREMENT ,
   `fecha` DATETIME NOT NULL ,
+  `codigo` CHAR(20) NOT NULL COMMENT 'Codigo de la factura del cliente' ,
   `idCliente` INT NOT NULL ,
   PRIMARY KEY (`idHistorialComprasClientes`) ,
   INDEX `fk_HistorialComprasClientes_Clientes1_idx` (`idCliente` ASC) ,
