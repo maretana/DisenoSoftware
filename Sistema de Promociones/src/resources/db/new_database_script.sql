@@ -341,7 +341,7 @@ CREATE  TABLE IF NOT EXISTS `sys_promo`.`HistorialComprasClientes` (
   CONSTRAINT `fk_HistorialComprasClientes_Clientes1`
     FOREIGN KEY (`idCliente` )
     REFERENCES `sys_promo`.`Clientes` (`idCliente` )
-    ON DELETE NO ACTION
+    ON DELETE CASCADE
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
@@ -362,7 +362,7 @@ CREATE  TABLE IF NOT EXISTS `sys_promo`.`DetallesCompraCliente` (
   CONSTRAINT `fk_DetallesCompraCliente_HistorialComprasClientes1`
     FOREIGN KEY (`idHistorialComprasClientes` )
     REFERENCES `sys_promo`.`HistorialComprasClientes` (`idHistorialComprasClientes` )
-    ON DELETE NO ACTION
+    ON DELETE CASCADE
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_DetallesCompraCliente_Productos1`
     FOREIGN KEY (`idProducto` )
