@@ -14,10 +14,6 @@ import servicio.ClienteService;
  * Clase controladora para las funciones del cliente.
  * @author Mario Retana Rojas <201029799>
  */
-
-
-
-
 @Controller
 public class ClienteController {
     
