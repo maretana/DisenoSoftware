@@ -69,21 +69,18 @@ DELIMITER ;
 ---------------------------------- insertarDetalleCompraPruebaRendimiento -----------------------------------------------
 
 ---------------------------------- borrarClientePruebaRendimiento -----------------------------------------------
-DROP PROCEDURE IF EXISTS borrarClientePruebaRendimiento;
+DROP PROCEDURE IF EXISTS borrarClientesPruebaRendimiento;
 
 DELIMITER $$
-/* Borra un cliente por completo de la base de datos que fue registrado con los procedimientos:
- *      -registrarClientePruebaRendimiento
- *      -insertarDetalleCompraPruebaRendimiento
- * Esto implica que borra todos los registros que se hayan agregado sobre ese cliente (e.g. compras).
+/* Borra todos los clientes por completo de la base de datos.
+ * Esto implica que borra todos los registros que se hayan agregado sobre los clientes (e.g. compras).
  */
-CREATE PROCEDURE borrarClientePruebaRendimiento(IN pIdentificacion VARCHAR(45))
+CREATE PROCEDURE borrarClientesPruebaRendimiento()
     BEGIN
         DELETE DCC, HCC, C, P FROM Personas P
         INNER JOIN Clientes C ON P.`idPersona` = C.`idPersona`
         INNER JOIN HistorialComprasClientes HCC ON C.`idCliente` = HCC.`idCliente`
-        INNER JOIN DetallesCompraCliente DCC ON HCC.`idHistorialComprasClientes` = DCC.`idHistorialComprasClientes`
-        WHERE C.identificacion = pIdentificacion;
+        INNER JOIN DetallesCompraCliente DCC ON HCC.`idHistorialComprasClientes` = DCC.`idHistorialComprasClientes`;
     END$$
 
 DELIMITER ;
