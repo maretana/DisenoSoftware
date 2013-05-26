@@ -206,8 +206,9 @@ DROP TABLE IF EXISTS `sys_promo`.`Productos` ;
 CREATE  TABLE IF NOT EXISTS `sys_promo`.`Productos` (
   `idProducto` INT NOT NULL AUTO_INCREMENT ,
   `nombre` VARCHAR(200) NOT NULL ,
-  `foto` VARCHAR(45) NULL ,
   `precio` DOUBLE(14,4) NOT NULL ,
+  `codigo` CHAR(20) NOT NULL ,
+  `foto` VARCHAR(45) NULL ,
   PRIMARY KEY (`idProducto`) )
 ENGINE = InnoDB;
 
