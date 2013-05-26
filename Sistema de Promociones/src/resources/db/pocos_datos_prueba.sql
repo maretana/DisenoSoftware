@@ -30,7 +30,7 @@ CREATE PROCEDURE llenarConPocosDatos()
 			SELECT LAST_INSERT_ID() INTO promocion_id;
 			SET productos = 1;
 			WHILE productos <= 50 DO
-				INSERT INTO Productos(nombre,precio,codigo) VALUES (CONCAT('Producto',productos),2500,CONCAT(CONCAT('e',empresas),CONCAT('p',productos)));
+				INSERT INTO Productos(nombre,precio,codigo) VALUES (CONCAT('Producto',productos),2500,CONCAT('e',empresas,'p',productos));
 				SELECT LAST_INSERT_ID() INTO producto_id;
 				INSERT INTO Productos_por_Promociones(idProducto, idPromocion, puntos) VALUES (producto_id, promocion_id, 20);
 				SET productos = productos + 1;
