@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import servicio.ClienteService;
+import servicio.PruebaService;
 
 /**
  * Controlador para las pruebas de rendimiento que realiza el usuario.
@@ -15,10 +15,10 @@ import servicio.ClienteService;
 @Controller
 public class PruebaController {
     
-    private final ClienteService _servicio;
+    private final PruebaService _servicio;
     
     @Autowired
-    public PruebaController(ClienteService pServicio){
+    public PruebaController(PruebaService pServicio){
         this._servicio = pServicio;
     }//fin constructor
     
@@ -29,7 +29,7 @@ public class PruebaController {
     @RequestMapping(value="/pruebas")
     public String mostrarPaginaConfiguracion(Model model){
         Prueba prueba = new Prueba();
-        Reporte reporte = new Reporte();
+        Reporte reporte = this._servicio.iniciarReporte();
         model.addAttribute("prueba", prueba);
         model.addAttribute("reporte", reporte);
         return "/pruebas/index";
