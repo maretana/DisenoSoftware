@@ -5,7 +5,10 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import modelo.Cliente;
+import modelo.DetallesPuntos;
 
 /**
  * Clase de persistencia que se encarga de buscar y guardar los datos relacionados a los clientes en la BD.
@@ -61,4 +64,34 @@ public class ClientePersistencia implements JDBCProperties{
             return null;
         }//fin catch
     }//fin buscar cliente por identificacion
+
+    /**
+     * Busca la información de los puntos del cliente. Usa el atributo
+     * <code>_identificacion</code> de la clase como identificación del cliente en la BD.
+     * @return Una lista con los detalles de los puntos ganados por el cliente.
+     * Si ocurre un error retorna <code>null</code>.
+     */
+    public List<DetallesPuntos> buscarInfoPuntosCliente(){
+        List<DetallesPuntos> respuesta = new ArrayList<DetallesPuntos>();
+        String sql = "{call contarPuntosClientePorPromocionPorEmpresa(?)}";
+        try{
+            CallableStatement call = this._conexion.prepareCall(sql);
+            call.setString(1,this._identificacion);
+            ResultSet rs = call.executeQuery();
+            while (rs.next()){
+                DetallesPuntos detalle = new DetallesPuntos();
+                detalle.setCantidad(rs.getInt("puntos"));
+                detalle.setNombreEmpresa(rs.getString("empresa"));
+                detalle.setNombrePromocion(rs.getString("promocion"));
+                respuesta.add(detalle);
+            }//fin while
+        }//fin try
+        catch (Exception e){
+            System.err.println("Error con la conexion a la BD");
+            System.err.println(e.getMessage());
+            return null;
+        }//fin catch
+        return respuesta;
+    }//fin buscar información de los puntos del cliente
+    
 }//fin cliente persistencia
