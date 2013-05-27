@@ -36,7 +36,7 @@ public class PruebaController {
         return "/pruebas/index";
     }//fin mostrar la pagina de configuración
     
-    @RequestMapping(value="/pruebas/llenardatos.html", method = RequestMethod.POST)
+    @RequestMapping(value="/pruebas/llenardatos", method = RequestMethod.POST)
     public String llenarBaseDeDatos(Prueba prueba){
         if (this._servicio.llenarBase(prueba.getTotalEmpresas(), prueba.getPromocionesPorEmpresa(), prueba.getProductosPorPromocion(), prueba.getPremiosPorPromocion()))
             return "redirect:/pruebas";
