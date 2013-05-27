@@ -48,12 +48,12 @@ CREATE  TABLE IF NOT EXISTS `sys_promo`.`Contactos` (
   CONSTRAINT `fk_Contactos_Personas`
     FOREIGN KEY (`idPersona` )
     REFERENCES `sys_promo`.`Personas` (`idPersona` )
-    ON DELETE NO ACTION
+    ON DELETE CASCADE
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Contactos_TiposContacto1`
     FOREIGN KEY (`idTiposContacto` )
     REFERENCES `sys_promo`.`TiposContacto` (`idTipoContacto` )
-    ON DELETE NO ACTION
+    ON DELETE CASCADE
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
@@ -73,7 +73,7 @@ CREATE  TABLE IF NOT EXISTS `sys_promo`.`Clientes` (
   CONSTRAINT `fk_Clientes_Personas1`
     FOREIGN KEY (`idPersona` )
     REFERENCES `sys_promo`.`Personas` (`idPersona` )
-    ON DELETE NO ACTION
+    ON DELETE CASCADE
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
@@ -104,7 +104,7 @@ CREATE  TABLE IF NOT EXISTS `sys_promo`.`Provincias` (
   CONSTRAINT `fk_Provincias_Paises1`
     FOREIGN KEY (`idPais` )
     REFERENCES `sys_promo`.`Paises` (`idPais` )
-    ON DELETE NO ACTION
+    ON DELETE CASCADE
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
@@ -123,7 +123,7 @@ CREATE  TABLE IF NOT EXISTS `sys_promo`.`Ciudad` (
   CONSTRAINT `fk_Ciudad_Provincias1`
     FOREIGN KEY (`idProvincia` )
     REFERENCES `sys_promo`.`Provincias` (`idProvincia` )
-    ON DELETE NO ACTION
+    ON DELETE CASCADE
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
@@ -142,7 +142,7 @@ CREATE  TABLE IF NOT EXISTS `sys_promo`.`Direcciones` (
   CONSTRAINT `fk_Direcciones_Ciudad1`
     FOREIGN KEY (`idCiudad` )
     REFERENCES `sys_promo`.`Ciudad` (`idCiudad` )
-    ON DELETE NO ACTION
+    ON DELETE CASCADE
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
@@ -165,12 +165,12 @@ CREATE  TABLE IF NOT EXISTS `sys_promo`.`Empresas` (
   CONSTRAINT `fk_Empresas_Personas1`
     FOREIGN KEY (`idEncargado` )
     REFERENCES `sys_promo`.`Personas` (`idPersona` )
-    ON DELETE NO ACTION
+    ON DELETE CASCADE
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Empresas_Direcciones1`
     FOREIGN KEY (`idDireccion` )
     REFERENCES `sys_promo`.`Direcciones` (`idDireccion` )
-    ON DELETE NO ACTION
+    ON DELETE CASCADE
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
@@ -193,7 +193,7 @@ CREATE  TABLE IF NOT EXISTS `sys_promo`.`Promociones` (
   CONSTRAINT `fk_Promociones_Empresas1`
     FOREIGN KEY (`idEmpresa` )
     REFERENCES `sys_promo`.`Empresas` (`idEmpresa` )
-    ON DELETE NO ACTION
+    ON DELETE CASCADE
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
@@ -228,12 +228,12 @@ CREATE  TABLE IF NOT EXISTS `sys_promo`.`Productos_por_Promociones` (
   CONSTRAINT `fk_Productos_por_Promociones_Productos1`
     FOREIGN KEY (`idProducto` )
     REFERENCES `sys_promo`.`Productos` (`idProducto` )
-    ON DELETE NO ACTION
+    ON DELETE CASCADE
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Productos_por_Promociones_Promociones1`
     FOREIGN KEY (`idPromocion` )
     REFERENCES `sys_promo`.`Promociones` (`idPromocion` )
-    ON DELETE NO ACTION
+    ON DELETE CASCADE
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
@@ -269,12 +269,12 @@ CREATE  TABLE IF NOT EXISTS `sys_promo`.`CuentasEmpresas` (
   CONSTRAINT `fk_CuentasEmpresas_Empresas1`
     FOREIGN KEY (`idEmpresa` )
     REFERENCES `sys_promo`.`Empresas` (`idEmpresa` )
-    ON DELETE NO ACTION
+    ON DELETE CASCADE
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_CuentasEmpresas_TiposCuenta1`
     FOREIGN KEY (`idTipoCuenta` )
     REFERENCES `sys_promo`.`TiposCuenta` (`idTipoCuenta` )
-    ON DELETE NO ACTION
+    ON DELETE CASCADE
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
@@ -295,7 +295,7 @@ CREATE  TABLE IF NOT EXISTS `sys_promo`.`Premios` (
   CONSTRAINT `fk_Premios_Promociones1`
     FOREIGN KEY (`idPromocion` )
     REFERENCES `sys_promo`.`Promociones` (`idPromocion` )
-    ON DELETE NO ACTION
+    ON DELETE CASCADE
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
@@ -315,12 +315,12 @@ CREATE  TABLE IF NOT EXISTS `sys_promo`.`Premios_por_Clientes` (
   CONSTRAINT `fk_Premios_por_Clientes_Premios1`
     FOREIGN KEY (`idPremio` )
     REFERENCES `sys_promo`.`Premios` (`idPremio` )
-    ON DELETE NO ACTION
+    ON DELETE CASCADE
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Premios_por_Clientes_Clientes1`
     FOREIGN KEY (`idCliente` )
     REFERENCES `sys_promo`.`Clientes` (`idCliente` )
-    ON DELETE NO ACTION
+    ON DELETE CASCADE
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
@@ -367,7 +367,7 @@ CREATE  TABLE IF NOT EXISTS `sys_promo`.`DetallesCompraCliente` (
   CONSTRAINT `fk_DetallesCompraCliente_Productos1`
     FOREIGN KEY (`idProducto` )
     REFERENCES `sys_promo`.`Productos` (`idProducto` )
-    ON DELETE NO ACTION
+    ON DELETE CASCADE
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 

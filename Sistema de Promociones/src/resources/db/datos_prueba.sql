@@ -1,3 +1,4 @@
+------------------------------------llenarDatosPrueba-----------------------------------------
 /* Llena la base de datos con la cantidad de datos proporcionada por el usuario.
  * Recibe las empresas que van a registrarse, las promociones que va a tener cada empresa,
  * Los productos que va a tener cada promocion y los prmeios que va a tener cada promocion.
@@ -50,3 +51,23 @@ CREATE PROCEDURE llenarDatosPrueba(IN pEmpresas INT, IN pPromos INT, IN pProduct
 	END$$
 
 DELIMITER ;
+------------------------------------llenarDatosPrueba-----------------------------------------
+
+------------------------------------borrarDatosPrueba-----------------------------------------
+DROP PROCEDURE IF EXISTS borrarDatosPrueba;
+
+DELIMITER $$
+
+CREATE PROCEDURE borrarDatosPrueba()
+    BEGIN
+        DELETE FROM Productos;
+        DELETE FROM Promociones;
+        DELETE FROM Premios;
+        DELETE FROM sys_promo.productos_por_promociones;
+        DELETE FROM sys_promo.empresas;
+        DELETE FROM sys_promo.personas WHERE nombre = 'Encargado';
+        DELETE FROM sys_promo.direcciones;
+    END$$
+
+DELIMITER ;
+------------------------------------borrarDatosPrueba-----------------------------------------
