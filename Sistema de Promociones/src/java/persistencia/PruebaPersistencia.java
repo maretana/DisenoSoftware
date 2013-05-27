@@ -12,11 +12,11 @@ import modelo.Cliente;
  * de la conexión con la BD.
  * @author Mario Retana Rojas <201029799>
  */
-public class PruebaRendimientoPersistencia implements JDBCProperties{
+public class PruebaPersistencia implements JDBCProperties{
 
     private Connection _conexion;
 
-    public PruebaRendimientoPersistencia(){
+    public PruebaPersistencia(){
         try {
             Class.forName(DRIVER);//Carga el driver del motor de BD en el servidor
             this._conexion = DriverManager.getConnection(CONNECTION_STRING, USERNAME, PASSWORD);
