@@ -1,5 +1,7 @@
 package modelo;
 
+import java.util.List;
+
 /**
  *
  * @author Mario Retana Rojas <201029799>
@@ -10,6 +12,7 @@ public class Cliente {
     private String _apellido1;
     private String _apellido2;
     private String _identificacion;
+    private List<DetallesPuntos> _puntos;
 
     public Cliente() {
     }//fin constructor
@@ -53,6 +56,14 @@ public class Cliente {
 
     public void setIdentificacion(String identificacion) {
         this._identificacion = identificacion;
+    }
+    
+    public List<DetallesPuntos> getPuntos() {
+        return _puntos;
+    }
+
+    public void setPuntos(List<DetallesPuntos> _puntos) {
+        this._puntos = _puntos;
     }
     
     //</editor-fold>
