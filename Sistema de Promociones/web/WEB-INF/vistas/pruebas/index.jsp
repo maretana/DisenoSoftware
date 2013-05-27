@@ -15,7 +15,7 @@
     </head>
     <body>
         <h1>Pruebas de Rendimiento</h1>
-        <label>Usuarios registrados en la BD: </label> ${reporte.usuariosRegistrados}
+        <label>Usuarios registrados en la BD: </label> ${reporte.clientesRegistrados}
         <br>
         <label>Compras registradas: </label> ${reporte.comprasRegistradas}
         <br>
