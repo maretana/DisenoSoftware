@@ -27,21 +27,13 @@
             <table>
                 <tr>
                     <th>Empresa</th>
-                </tr>
-                <tr>
                     <th>Promoción</th>
-                </tr>
-                <tr>
                     <th>Puntos</th>
                 </tr>
                 <c:forEach var="info" items="${cliente.puntos}">
                     <tr>
                         <td>${info.nombreEmpresa}</td>
-                    </tr>
-                    <tr>
                         <td>${info.nombrePromocion}</td>
-                    </tr>
-                    <tr>
                         <td>${info.cantidad}</td>
                     </tr>
                 </c:forEach>
