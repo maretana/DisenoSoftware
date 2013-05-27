@@ -29,12 +29,10 @@ public class PruebaController {
      */
     @RequestMapping(value="/pruebas")
     public String mostrarPaginaConfiguracion(Model model){
+        Prueba prueba = new Prueba();
         Reporte reporte = this._servicio.iniciarReporte();
+        model.addAttribute("prueba", prueba);
         model.addAttribute("reporte", reporte);
-        if (!model.containsAttribute("prueba")){
-            Prueba prueba = new Prueba();
-            model.addAttribute("prueba", prueba);
-        }//fin si no tiene el atributo prueba
         return "/pruebas/index";
     }//fin mostrar la pagina de configuración
     
