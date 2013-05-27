@@ -1,10 +1,8 @@
 package servicio;
 
 import modelo.Cliente;
-import modelo.Reporte;
 import org.springframework.stereotype.Service;
 import persistencia.ClientePersistencia;
-import persistencia.ReportePersistencia;
 
 /**
  * Implementacion de la interfaz ClienteService.
@@ -15,11 +13,9 @@ import persistencia.ReportePersistencia;
 public class ClienteServiceImpl implements ClienteService{
 
     private ClientePersistencia _cliente;
-    private ReportePersistencia _reporte;
     
     public ClienteServiceImpl() {
         this._cliente = new ClientePersistencia();
-        this._reporte = new ReportePersistencia();
     }//fin constructor
     
     @Override
@@ -29,11 +25,5 @@ public class ClienteServiceImpl implements ClienteService{
             cliente.setPuntos(this._cliente.buscarInfoPuntosCliente());
         return cliente;
     }//fin buscar cliente por identificacion
-    
-    @Override
-    public Reporte iniciarReporte(){
-        Reporte reporte = this._reporte.contarDatos();
-        return reporte;
-    }
     
 }//fin implementacion de ClienteService
