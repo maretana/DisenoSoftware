@@ -8,7 +8,7 @@ DROP PROCEDURE IF EXISTS llenarDatosPrueba;
 
 DELIMITER $$
 
-CREATE PROCEDURE llenarDatosPrueba(IN pEmpresas INT, IN pPromos INT, IN pProductos INT
+CREATE PROCEDURE llenarDatosPrueba(IN pEmpresas INT, IN pPromos INT, IN pProductos INT,
                                      IN pPremios INT)
 	BEGIN
 		DECLARE encargado_id INT;
