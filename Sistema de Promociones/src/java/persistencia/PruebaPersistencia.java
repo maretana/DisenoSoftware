@@ -111,6 +111,8 @@ public class PruebaPersistencia implements JDBCProperties{
             call.setString(2, pProducto);
             call.setInt(3, pCantidad);
             call.setString(4, pEmpresa);
+            call.execute();
+            this._conexion.commit();
         }//fin try
         catch (Exception e){
             System.err.println(e.getMessage());
@@ -125,5 +127,38 @@ public class PruebaPersistencia implements JDBCProperties{
         }//fin catch
         return true;
     }//fin ingresar detalle de compra
+    
+    /**
+     * Llena la base de datos con la cantidad de datos que indico el usuario.
+     * @param pEmpresas Cantidad de empresas que se van a registrar.
+     * @param pPromociones Cantidad de promociones que cada empresa tendra registradas.
+     * @param pProductos Cantidad de productos registrados en cada promocion.
+     * @param pPremios Total de premios de cada promocion.
+     * @return Retorna <code>true</code> si logra llenar la BD y <code>false</code> de lo contrario.
+     */
+    public boolean llenarBase(int pEmpresas, int pPromociones, int pProductos, int pPremios){
+        String sql = "{call llenarDatosPrueba(?,?,?,?)}";
+        try{
+            CallableStatement call = this._conexion.prepareCall(sql);
+            call.setInt(1, pEmpresas);
+            call.setInt(2, pPromociones);
+            call.setInt(3, pProductos);
+            call.setInt(4, pPremios);
+            call.execute();
+            this._conexion.commit();
+        }//fin try
+        catch (Exception e){
+            System.err.println(e.getMessage());
+            try{
+                this._conexion.rollback();
+            }//fin try
+            catch (SQLException sqlex){
+                System.err.println("Error al hacer rollback!");
+                System.err.println(sqlex.getMessage());
+            }//fin catch
+            return false;
+        }//fin catch
+        return true;
+    }//fin llenar base
 
 }//fin clase pruebas rendimiento persistencia

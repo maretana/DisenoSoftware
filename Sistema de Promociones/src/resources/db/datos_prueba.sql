@@ -4,11 +4,11 @@
  * NOTA: Todas las empresas van a quedar registradas en la ciudad con el PK = 1.
  * Supone que la base de datos no tiene datos previos.
  */
-DROP PROCEDURE IF EXISTS llenarConPocosDatos;
+DROP PROCEDURE IF EXISTS llenarDatosPrueba;
 
 DELIMITER $$
 
-CREATE PROCEDURE llenarConPocosDatos(IN pEmpresas INT, IN pPromos INT, IN pProductos INT
+CREATE PROCEDURE llenarDatosPrueba(IN pEmpresas INT, IN pPromos INT, IN pProductos INT
                                      IN pPremios INT)
 	BEGIN
 		DECLARE encargado_id INT;
@@ -23,7 +23,7 @@ CREATE PROCEDURE llenarConPocosDatos(IN pEmpresas INT, IN pPromos INT, IN pProdu
 		WHILE empresas < pEmpresas DO
 			INSERT Personas(nombre, apellido1) VALUES ('Encargado', CONCAT('Empresa',empresas));
 			SELECT LAST_INSERT_ID() INTO encargado_id;
-			INSERT Direcciones(detalles, idCiudad) VALUES (CONCAT('Detalles de la direcci�n de la Empresa',empresas),1);
+			INSERT Direcciones(detalles, idCiudad) VALUES (CONCAT('Detalles de la direccion de la Empresa',empresas),1);
 			SELECT LAST_INSERT_ID() INTO direccion_id;
 			INSERT INTO Empresas(nombre,usuario,password,idEncargado,idDireccion) VALUES (CONCAT('Empresa',empresas),'usuario','password',encargado_id,direccion_id);
 			SELECT LAST_INSERT_ID() INTO empresa_id;
