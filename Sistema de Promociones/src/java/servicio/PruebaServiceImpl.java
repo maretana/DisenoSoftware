@@ -2,6 +2,7 @@ package servicio;
 
 import modelo.Reporte;
 import org.springframework.stereotype.Service;
+import persistencia.PruebaPersistencia;
 import persistencia.ReportePersistencia;
 
 /**
@@ -12,9 +13,11 @@ import persistencia.ReportePersistencia;
 public class PruebaServiceImpl implements PruebaService{
     
     private ReportePersistencia _reporte;
+    private PruebaPersistencia _prueba;
     
     public PruebaServiceImpl(){
         this._reporte = new ReportePersistencia();
+        this._prueba = new PruebaPersistencia();
     }//fin constructor
     
     @Override
@@ -22,5 +25,10 @@ public class PruebaServiceImpl implements PruebaService{
         Reporte reporte = this._reporte.contarDatos();
         return reporte;
     }//fin iniciar reporte
+    
+    @Override
+    public boolean llenarBase(int pEmpresas, int pPromociones, int pProductos, int pPremios){
+        return this._prueba.llenarBase(pEmpresas, pPromociones, pProductos, pPremios);
+    }//fin llenar base
     
 }//fin prueba service impl

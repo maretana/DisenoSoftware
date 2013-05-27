@@ -14,4 +14,14 @@ public interface PruebaService {
      */
     public Reporte iniciarReporte();
     
+    /**
+     * Llena la base de datos con la cantidad de datos que indico el usuario.
+     * @param pEmpresas Cantidad de empresas que se van a registrar.
+     * @param pPromociones Cantidad de promociones que cada empresa tendra registradas.
+     * @param pProductos Cantidad de productos registrados en cada promocion.
+     * @param pPremios Total de premios de cada promocion.
+     * @return Retorna <code>true</code> si logra llenar la BD y <code>false</code> de lo contrario.
+     */
+    public boolean llenarBase(int pEmpresas, int pPromociones, int pProductos, int pPremios);
+    
 }//fin interface PruebaService

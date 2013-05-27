@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import servicio.PruebaService;
 
 /**
@@ -34,5 +35,13 @@ public class PruebaController {
         model.addAttribute("reporte", reporte);
         return "/pruebas/index";
     }//fin mostrar la pagina de configuración
+    
+    @RequestMapping(value="/pruebas/llenardatos.html", method = RequestMethod.POST)
+    public String llenarBaseDeDatos(Prueba prueba){
+        if (this._servicio.llenarBase(prueba.getTotalEmpresas(), prueba.getPromocionesPorEmpresa(), prueba.getProductosPorPromocion(), prueba.getPremiosPorPromocion()))
+            return "redirect:/pruebas";
+        else
+            return "redirect:/error";
+    }//fin llenar base de datos
     
 }//fin pruebas controller
