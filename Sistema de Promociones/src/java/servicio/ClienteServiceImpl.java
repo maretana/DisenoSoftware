@@ -20,7 +20,10 @@ public class ClienteServiceImpl implements ClienteService{
     
     @Override
     public Cliente buscarClientePorID(String pIdentificacion) {
-        return this._cliente.buscarClientePorID(pIdentificacion);
+        Cliente cliente = this._cliente.buscarClientePorID(pIdentificacion);
+        if (cliente != null)
+            cliente.setPuntos(this._cliente.buscarInfoPuntosCliente());
+        return cliente;
     }//fin buscar cliente por identificacion
     
 }//fin implementacion de ClienteService
