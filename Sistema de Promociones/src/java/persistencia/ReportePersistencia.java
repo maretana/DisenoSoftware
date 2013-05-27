@@ -28,6 +28,10 @@ public class ReportePersistencia implements JDBCProperties{
         }//fin catch
     }//fin constructor
     
+    /**
+     * Cuenta los datos iniciales que va a tener un reporte.
+     * @return El modelo de reporte nuevo o <code>null</code> si falla la conexion.
+     */
     public Reporte contarDatos(){
         String sql = "{call contarDatosReporte()}";
         Reporte reporte = new Reporte();
