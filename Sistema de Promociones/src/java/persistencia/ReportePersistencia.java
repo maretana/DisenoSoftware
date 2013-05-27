@@ -41,7 +41,7 @@ public class ReportePersistencia implements JDBCProperties{
             while(rs.next()){
                 String nombre = rs.getString("nombre");
                 int total = rs.getInt("total");
-                if (nombre.equals("empresa"))
+                if (nombre.equals("empresas"))
                     reporte.setEmpresasRegistradas(total);
                 else if (nombre.equals("promos"))
                     reporte.setPromocionesRegistradas(total);
