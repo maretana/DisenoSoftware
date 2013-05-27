@@ -1,7 +1,9 @@
 package controlador;
 
+import modelo.Prueba;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import servicio.ClienteService;
 
@@ -24,7 +26,9 @@ public class PruebaController {
      * @return La dirección del JSP que debe mostrar.
      */
     @RequestMapping(value="/pruebas")
-    public String mostrarPaginaConfiguracion(){
+    public String mostrarPaginaConfiguracion(Model model){
+        Prueba prueba = new Prueba();
+        model.addAttribute("prueba", prueba);
         return "/pruebas/index";
     }//fin mostrar la pagina de configuración
     

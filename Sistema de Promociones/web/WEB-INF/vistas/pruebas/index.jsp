@@ -43,7 +43,8 @@
                 <br>
                 <form:label path="productosPorPromocion">Productos por promocion</form:label>
                 <form:input path="productosPorPromocion" title="Productos que va a tener cada promocion"/>
-                <form:button value="Llenar base"/>
+                <br>
+                <form:button>Llenar Base de Datos</form:button>
             </fieldset>
         </form:form>
     </body>
