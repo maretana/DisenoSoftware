@@ -6,7 +6,7 @@ package modelo;
  */
 public class Reporte {
     
-    private int _usuariosRegistrados;
+    private int _clientesRegistrados;
     private int _empresasRegistradas;
     private int _productosComprados;
     private int _comprasRegistradas;
@@ -69,12 +69,12 @@ public class Reporte {
     }
     
     
-    public int getUsuariosRegistrados() {
-        return _usuariosRegistrados;
+    public int getClientesRegistrados() {
+        return _clientesRegistrados;
     }
     
-    public void setUsuariosRegistrados(int usuariosRegistrados) {
-        this._usuariosRegistrados = usuariosRegistrados;
+    public void setClientesRegistrados(int clientesRegistrados) {
+        this._clientesRegistrados = clientesRegistrados;
     }
     //</editor-fold>
 
