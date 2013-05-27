@@ -15,19 +15,21 @@
     </head>
     <body>
         <h1>Pruebas de Rendimiento</h1>
-        <label>Usuarios registrados en la BD: </label> 1
+        <label>Usuarios registrados en la BD: </label> ${reporte.usuariosRegistrados}
         <br>
-        <label>Compras registradas: </label> 1
+        <label>Compras registradas: </label> ${reporte.comprasRegistradas}
         <br>
-        <label>Cantidad de productos comprados: </label> 4
+        <label>Cantidad de productos comprados: </label> ${reporte.productosComprados}
         <br>
-        <label>Empresas registradas: </label> 100
+        <label>Empresas registradas: </label> ${reporte.empresasRegistradas}
         <br>
-        <label>Promociones registradas: </label> 100
+        <label>Promociones registradas: </label> ${reporte.promocionesRegistradas}
         <br>
-        <label>Productos registrados: </label> 5000
+        <label>Productos registrados: </label> ${reporte.productosRegistrados}
         <br>
-        <label>Premios registrados: </label> 3000
+        <label>Premios registrados: </label> ${reporte.premiosRegistrados}
+        <br>
+        <br>
         <spring:url value="pruebas/llenardatos.html" var="actionllenardatos" />
         <form:form modelAttribute="prueba" method="post" action="${actionllenardatos}">
             <fieldset>

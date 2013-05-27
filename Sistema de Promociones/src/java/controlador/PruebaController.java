@@ -1,6 +1,7 @@
 package controlador;
 
 import modelo.Prueba;
+import modelo.Reporte;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,7 +29,9 @@ public class PruebaController {
     @RequestMapping(value="/pruebas")
     public String mostrarPaginaConfiguracion(Model model){
         Prueba prueba = new Prueba();
+        Reporte reporte = new Reporte();
         model.addAttribute("prueba", prueba);
+        model.addAttribute("reporte", reporte);
         return "/pruebas/index";
     }//fin mostrar la pagina de configuración
     
