@@ -19,7 +19,7 @@ CREATE PROCEDURE contarDatosReporte()
         UNION
         (SELECT 'comprados', SUM(cantidad) FROM DetallesCompraCliente)
         UNION
-        (SELECT 'compras', COUNT(*) FROM HistorialComprasCliente)
+        (SELECT 'compras', COUNT(*) FROM HistorialComprasClientes)
         UNION 
         (SELECT 'clientes', COUNT(*) FROM Clientes);
     END$$
