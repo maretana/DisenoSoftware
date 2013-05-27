@@ -1,6 +1,7 @@
 package servicio;
 
 import modelo.Cliente;
+import modelo.Reporte;
 
 /**
  * Se declaran funciones usadas por controaldores.
@@ -14,4 +15,10 @@ public interface ClienteService {
      * que no fue posible encontrar al cliente.
      */
     public Cliente buscarClientePorID(String pIdentificacion);
+    
+    /**
+     * Busca los datos iniciales del reporte en la BD.
+     * @return Un modelo del reporte que va a ver el usuario.
+     */
+    public Reporte iniciarReporte();
 }//fin ClienteService
