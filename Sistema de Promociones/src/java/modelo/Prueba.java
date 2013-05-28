@@ -12,9 +12,11 @@ public class Prueba {
     private int _productosPorPromocion;
     private int _maxCompras;
     private int _maxProductosComprados;
-    private int _maxDias;   
-    
+    private int _maxDias;
+    private int _clientesPorRegistrar;
+
     public Prueba(){
+        this._maxDias = 30;
     }//fin constructor
 
     //<editor-fold defaultstate="collapsed" desc="Getters y Setters">
@@ -76,6 +78,14 @@ public class Prueba {
 
     public void setMaxCompras(int maxCompras) {
         this._maxCompras = maxCompras;
+    }
+    
+    public int getClientesPorRegistrar() {
+        return _clientesPorRegistrar;
+    }
+
+    public void setClientesPorRegistrar(int clientesPorRegistrar) {
+        this._clientesPorRegistrar = clientesPorRegistrar;
     }
     //</editor-fold>
 

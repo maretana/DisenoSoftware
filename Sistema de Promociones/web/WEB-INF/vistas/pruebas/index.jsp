@@ -47,6 +47,15 @@
                 <form:label path="productosPorPromocion">Productos por promocion</form:label>
                 <form:input path="productosPorPromocion" title="Productos que va a tener cada promocion"/>
                 <br>
+                <form:label path="clientesPorRegistrar">Clientes por registrar: </form:label>
+                <form:input path="clientesPorRegistrar" title="Cantidad de clientes que se registran en la base"/>
+                <br>
+                <form:label path="maxCompras">Cantidad maxima de compras por cliente: </form:label>
+                <form:input path="maxCompras" title="Cada cliente hace entre 1 y el maximo de compras"/>
+                <br>
+                <form:label path="maxProductosComprados">Cantidad maxima de productos del mismo tipo: </form:label>
+                <form:input path="maxProductosComprados" title="Cada cliente compra hasta este maximo de productos del mismo tipo en sus compras"/>
+                <br>
                 <form:button>Llenar Base de Datos</form:button> <a href="${borrardatos}" title="Esta accion no se puede deshacer">Borrar datos de la base</a>
             </fieldset>
         </form:form>
