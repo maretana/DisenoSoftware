@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.servlet.ModelAndView;
 import servicio.PruebaService;
 
 /**
@@ -36,10 +38,21 @@ public class PruebaController {
         return "/pruebas/index";
     }//fin mostrar la pagina de configuración
     
+    /**
+     * Muestra la página de configuración de las pruebas.
+     * @return La dirección del JSP que debe mostrar.
+     */
+    private String mostrarPaginaConfiguracion(Prueba prueba, Model model){
+        Reporte reporte = this._servicio.iniciarReporte();
+        model.addAttribute("prueba", prueba);
+        model.addAttribute("reporte", reporte);
+        return "/pruebas/index";
+    }//fin mostrar la pagina de configuración
+    
     @RequestMapping(value="/pruebas/llenardatos", method = RequestMethod.POST)
-    public String llenarBaseDeDatos(Prueba prueba){
+    public String llenarBaseDeDatos(Prueba prueba, Model model){
         if (this._servicio.llenarBase(prueba.getTotalEmpresas(), prueba.getPromocionesPorEmpresa(), prueba.getProductosPorPromocion(), prueba.getPremiosPorPromocion()))
-            return "redirect:/pruebas";
+            return this.mostrarPaginaConfiguracion(prueba, model);
         else
             return "redirect:/error";
     }//fin llenar base de datos

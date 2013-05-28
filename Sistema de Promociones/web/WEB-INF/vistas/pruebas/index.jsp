@@ -31,6 +31,7 @@
         <br>
         <br>
         <spring:url value="pruebas/llenardatos.html" var="actionllenardatos" />
+        <spring:url value="pruebas/borrardatos.html" var="borrardatos" />
         <form:form modelAttribute="prueba" method="post" action="${actionllenardatos}">
             <fieldset>
                 <legend>Llenado de datos</legend>
@@ -46,7 +47,7 @@
                 <form:label path="productosPorPromocion">Productos por promocion</form:label>
                 <form:input path="productosPorPromocion" title="Productos que va a tener cada promocion"/>
                 <br>
-                <form:button>Llenar Base de Datos</form:button> <a href="pruebas/borrardatos.html" title="Esta accion no se puede deshacer">Borrar datos de la base</a>
+                <form:button>Llenar Base de Datos</form:button> <a href="${borrardatos}" title="Esta accion no se puede deshacer">Borrar datos de la base</a>
             </fieldset>
         </form:form>
     </body>
