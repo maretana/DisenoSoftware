@@ -88,5 +88,14 @@ public class Prueba {
         this._clientesPorRegistrar = clientesPorRegistrar;
     }
     //</editor-fold>
+    
+    /**
+     * Genera un numero enre 1 y el limite.
+     * @param pLimite Limite del numero que se va a generar.
+     * @return Retorna un numero entero entre 1 y el limite.
+     */
+    public int generarInt(int pLimite){
+        return 1 + (int)(Math.random() * ((pLimite - 1) + 1));
+    }//fin generar dias
 
 }//fin clase prueba

@@ -76,6 +76,7 @@ public class PruebaPersistencia implements JDBCProperties{
         try{
             CallableStatement call = this._conexion.prepareCall(sql);
             call.registerOutParameter(1, Types.CHAR);
+            call.setString(1, codigo_bd);
             call.setString(2, pIdentificacion);
             call.setInt(3, pDias);
             call.execute();
@@ -170,6 +171,8 @@ public class PruebaPersistencia implements JDBCProperties{
         String sql = "{call borrarDatosPrueba()}";
         try{
             CallableStatement call = this._conexion.prepareCall(sql);
+            call.execute();
+            call = this._conexion.prepareCall("{call borrarClientesPruebaRendimiento()}");
             call.execute();
             this._conexion.commit();
         }//fin try

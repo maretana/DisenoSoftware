@@ -53,7 +53,7 @@
                 <form:label path="maxCompras">Cantidad maxima de compras por cliente: </form:label>
                 <form:input path="maxCompras" title="Cada cliente hace entre 1 y el maximo de compras"/>
                 <br>
-                <form:label path="maxProductosComprados">Cantidad maxima de productos del mismo tipo: </form:label>
+                <form:label path="maxProductosComprados">Cantidad maxima de productos por compra: </form:label>
                 <form:input path="maxProductosComprados" title="Cada cliente compra hasta este maximo de productos del mismo tipo en sus compras"/>
                 <br>
                 <form:button>Llenar Base de Datos</form:button> <a href="${borrardatos}" title="Esta accion no se puede deshacer">Borrar datos de la base</a>

@@ -1,5 +1,7 @@
 package servicio;
 
+import modelo.Cliente;
+import modelo.Prueba;
 import modelo.Reporte;
 import org.springframework.stereotype.Service;
 import persistencia.PruebaPersistencia;
@@ -27,8 +29,34 @@ public class PruebaServiceImpl implements PruebaService{
     }//fin iniciar reporte
     
     @Override
-    public boolean llenarBase(int pEmpresas, int pPromociones, int pProductos, int pPremios){
-        return this._prueba.llenarBase(pEmpresas, pPromociones, pProductos, pPremios);
+    public boolean llenarBase(Prueba prueba){
+        if(this._prueba.llenarBase(prueba.getTotalEmpresas(), prueba.getPromocionesPorEmpresa(), prueba.getProductosPorPromocion(), prueba.getPremiosPorPromocion())){
+            boolean respuesta = true;
+            String empresa = "Empresa";
+            String nombre = "Cliente";
+            int identificacion = 186429862;
+            for(int i=0;i<prueba.getClientesPorRegistrar();i++){
+                Cliente cliente = new Cliente();
+                cliente.setNombre(nombre + i);
+                cliente.setApellido1("Apellido1");
+                cliente.setApellido2("Apellido2");
+                cliente.setIdentificacion(identificacion + "");
+                respuesta = this._prueba.registrarCliente(cliente);
+                int compras = prueba.generarInt(prueba.getMaxCompras());
+                for(int j=0;j<compras;j++){
+                    int dias = prueba.generarInt(prueba.getMaxDias());
+                    int comprados = prueba.generarInt(prueba.getMaxProductosComprados());
+                    String codigo = this._prueba.registrarNuevaCompra(j+(i*prueba.getClientesPorRegistrar())+"", identificacion + "", dias);
+                    String emp = empresa + prueba.generarInt(prueba.getTotalEmpresas());
+                    for (int k=0;k<comprados;k++)
+                        respuesta = this._prueba.ingresarDetalleCompra(codigo, emp, "Producto" + prueba.generarInt(prueba.getProductosPorPromocion()*prueba.getPromocionesPorEmpresa()), prueba.generarInt(10));
+                }//fin for
+                identificacion++;
+            }//fin for
+            return respuesta;
+        }//fin si falla el llenado inicial
+        else
+            return false;
     }//fin llenar base
     
     @Override
