@@ -44,4 +44,12 @@ public class PruebaController {
             return "redirect:/error";
     }//fin llenar base de datos
     
+    @RequestMapping(value="/pruebas/borrardatos")
+    public String borrarDatosPrueba(){
+        if(this._servicio.borrarDatosPrueba())
+            return "redirect:/pruebas";
+        else
+            return "redirect:/error";
+    }//fin borrar datos prueba
+    
 }//fin pruebas controller

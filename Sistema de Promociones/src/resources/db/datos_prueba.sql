@@ -63,10 +63,10 @@ CREATE PROCEDURE borrarDatosPrueba()
         DELETE FROM Productos;
         DELETE FROM Promociones;
         DELETE FROM Premios;
-        DELETE FROM sys_promo.productos_por_promociones;
-        DELETE FROM sys_promo.empresas;
-        DELETE FROM sys_promo.personas WHERE nombre = 'Encargado';
-        DELETE FROM sys_promo.direcciones;
+        DELETE FROM sys_promo.Productos_por_Promociones;
+        DELETE FROM sys_promo.Empresas;
+        DELETE FROM sys_promo.Personas WHERE nombre = 'Encargado';
+        DELETE FROM sys_promo.Direcciones;
     END$$
 
 DELIMITER ;

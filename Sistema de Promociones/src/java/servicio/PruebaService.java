@@ -24,4 +24,11 @@ public interface PruebaService {
      */
     public boolean llenarBase(int pEmpresas, int pPromociones, int pProductos, int pPremios);
     
+    /**
+     * Borra los datos de prueba que fueron agregados a la BD.
+     * @return Retorna <code>true</code> si logra borrar los datos o <code>false</code> en
+     * caso contrario.
+     */
+    public boolean borrarDatosPrueba();
+    
 }//fin interface PruebaService

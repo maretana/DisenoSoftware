@@ -6,8 +6,8 @@ package persistencia;
  * @author Mario Retana Rojas <201029799>
  */
 public interface JDBCProperties {
-    public static final String CONNECTION_STRING = "jdbc:mysql://192.168.1.107:3306/sys_promo";
-    public static final String USERNAME = "remoto";
+    public static final String CONNECTION_STRING = "jdbc:mysql://localhost:3306/sys_promo";
+    public static final String USERNAME = "root";
     public static final String PASSWORD = "admin";
     public static final String DRIVER = "com.mysql.jdbc.Driver";
 }//fin JDBC Properties

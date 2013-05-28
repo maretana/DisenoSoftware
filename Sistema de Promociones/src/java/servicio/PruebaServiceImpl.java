@@ -31,4 +31,9 @@ public class PruebaServiceImpl implements PruebaService{
         return this._prueba.llenarBase(pEmpresas, pPromociones, pProductos, pPremios);
     }//fin llenar base
     
+    @Override
+    public boolean borrarDatosPrueba(){
+        return this._prueba.borrarDatosPrueba();
+    }//fin borrar datos prueba
+    
 }//fin prueba service impl

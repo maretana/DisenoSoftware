@@ -46,7 +46,7 @@
                 <form:label path="productosPorPromocion">Productos por promocion</form:label>
                 <form:input path="productosPorPromocion" title="Productos que va a tener cada promocion"/>
                 <br>
-                <form:button>Llenar Base de Datos</form:button>
+                <form:button>Llenar Base de Datos</form:button> <a href="pruebas/borrardatos.html" title="Esta accion no se puede deshacer">Borrar datos de la base</a>
             </fieldset>
         </form:form>
     </body>

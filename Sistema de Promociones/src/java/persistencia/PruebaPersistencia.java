@@ -161,4 +161,30 @@ public class PruebaPersistencia implements JDBCProperties{
         return true;
     }//fin llenar base
 
+    /**
+     * Borra los datos de prueba que fueron insertados en la BD.
+     * @return Retorna <code>true</code> si logra borrar los datos y <code>false</code>
+     * de lo contrario.
+     */
+    public boolean borrarDatosPrueba(){
+        String sql = "{call borrarDatosPrueba()}";
+        try{
+            CallableStatement call = this._conexion.prepareCall(sql);
+            call.execute();
+            this._conexion.commit();
+        }//fin try
+        catch (Exception e){
+            System.err.println(e.getMessage());
+            try{
+                this._conexion.rollback();
+            }//fin try
+            catch (SQLException sqlex){
+                System.err.println("Error al hacer rollback!");
+                System.err.println(sqlex.getMessage());
+            }//fin catch
+            return false;
+        }//fin catch
+        return true;
+    }//fin borrar datos prueba
+    
 }//fin clase pruebas rendimiento persistencia
