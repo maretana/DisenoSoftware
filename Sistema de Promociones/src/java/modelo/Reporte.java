@@ -13,9 +13,6 @@ public class Reporte {
     private int _promocionesRegistradas;
     private int _productosRegistrados;
     private int _premiosRegistrados;
-    private int _maxCompras;
-    private int _maxProductosComprados;
-    private int _maxDias;
     
     public Reporte(){
     }//fin constructor
@@ -77,31 +74,6 @@ public class Reporte {
     
     public void setClientesRegistrados(int clientesRegistrados) {
         this._clientesRegistrados = clientesRegistrados;
-    }
-    
-    public int getMaxDias() {
-        return _maxDias;
-    }
-
-    public void setMaxDias(int maxDias) {
-        this._maxDias = maxDias;
-    }
-
-
-    public int getMaxProductosComprados() {
-        return _maxProductosComprados;
-    }
-
-    public void setMaxProductosComprados(int maxProductosComprados) {
-        this._maxProductosComprados = maxProductosComprados;
-    }
-
-    public int getMaxCompras() {
-        return _maxCompras;
-    }
-
-    public void setMaxCompras(int maxCompras) {
-        this._maxCompras = maxCompras;
     }
     //</editor-fold>
 
