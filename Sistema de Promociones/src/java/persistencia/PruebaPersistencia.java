@@ -80,6 +80,7 @@ public class PruebaPersistencia implements JDBCProperties{
             call.setString(2, pIdentificacion);
             call.setInt(3, pDias);
             call.execute();
+            codigo_bd = call.getString(1);
             this._conexion.commit();
         }//fin try
         catch (Exception e){
@@ -117,6 +118,7 @@ public class PruebaPersistencia implements JDBCProperties{
         }//fin try
         catch (Exception e){
             System.err.println(e.getMessage());
+            System.err.println(pCodigo);
             try{
                 this._conexion.rollback();
             }//fin try

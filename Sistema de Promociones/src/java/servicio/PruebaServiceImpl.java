@@ -47,9 +47,9 @@ public class PruebaServiceImpl implements PruebaService{
                     int dias = prueba.generarInt(prueba.getMaxDias());
                     int comprados = prueba.generarInt(prueba.getMaxProductosComprados());
                     String codigo = this._prueba.registrarNuevaCompra(j+(i*prueba.getClientesPorRegistrar())+"", identificacion + "", dias);
-                    String emp = empresa + prueba.generarInt(prueba.getTotalEmpresas());
+                    String emp = empresa + (prueba.generarInt(prueba.getTotalEmpresas())-1);
                     for (int k=0;k<comprados;k++)
-                        respuesta = this._prueba.ingresarDetalleCompra(codigo, emp, "Producto" + prueba.generarInt(prueba.getProductosPorPromocion()*prueba.getPromocionesPorEmpresa()), prueba.generarInt(10));
+                        respuesta = this._prueba.ingresarDetalleCompra(codigo, emp, "Producto" + (prueba.generarInt(prueba.getProductosPorPromocion()*prueba.getPromocionesPorEmpresa())-1), prueba.generarInt(10));
                 }//fin for
                 identificacion++;
             }//fin for

@@ -77,10 +77,10 @@ DELIMITER $$
  */
 CREATE PROCEDURE borrarClientesPruebaRendimiento()
     BEGIN
-        DELETE DCC, HCC, C, P FROM Personas P
-        INNER JOIN Clientes C ON P.`idPersona` = C.`idPersona`
-        INNER JOIN HistorialComprasClientes HCC ON C.`idCliente` = HCC.`idCliente`
-        INNER JOIN DetallesCompraCliente DCC ON HCC.`idHistorialComprasClientes` = DCC.`idHistorialComprasClientes`;
+        DELETE C, P FROM Personas P
+        INNER JOIN Clientes C ON P.`idPersona` = C.`idPersona`;
+        DELETE FROM HistorialComprasClientes;
+        DELETE FROM DetallesCompraCliente;
     END$$
 
 DELIMITER ;

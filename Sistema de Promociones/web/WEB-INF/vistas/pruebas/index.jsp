@@ -31,7 +31,7 @@
         <br>
         <br>
         <spring:url value="pruebas/llenardatos.html" var="actionllenardatos" />
-        <spring:url value="pruebas/borrardatos.html" var="borrardatos" />
+        <spring:url value="/pruebas/borrardatos.html" var="borrardatos" />
         <form:form modelAttribute="prueba" method="post" action="${actionllenardatos}">
             <fieldset>
                 <legend>Llenado de datos</legend>
@@ -53,7 +53,7 @@
                 <form:label path="maxCompras">Cantidad maxima de compras por cliente: </form:label>
                 <form:input path="maxCompras" title="Cada cliente hace entre 1 y el maximo de compras"/>
                 <br>
-                <form:label path="maxProductosComprados">Cantidad maxima de productos por compra: </form:label>
+                <form:label path="maxProductosComprados">Cantidad maxima de productos diferentes por compra: </form:label>
                 <form:input path="maxProductosComprados" title="Cada cliente compra hasta este maximo de productos del mismo tipo en sus compras"/>
                 <br>
                 <form:button>Llenar Base de Datos</form:button> <a href="${borrardatos}" title="Esta accion no se puede deshacer">Borrar datos de la base</a>

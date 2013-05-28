@@ -8,6 +8,6 @@ package persistencia;
 public interface JDBCProperties {
     public static final String CONNECTION_STRING = "jdbc:mysql://localhost:3306/sys_promo";
     public static final String USERNAME = "root";
-    public static final String PASSWORD = "admin";
+    public static final String PASSWORD = "";
     public static final String DRIVER = "com.mysql.jdbc.Driver";
 }//fin JDBC Properties
