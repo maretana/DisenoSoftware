@@ -63,8 +63,19 @@ public class PruebaServiceImpl implements PruebaService{
     }//fin llenar base
     
     @Override
-    public boolean borrarDatosPrueba(){
-        return this._prueba.borrarDatosPrueba();
+    public boolean borrarDatosPrueba(Prueba prueba){
+        if (this._prueba.borrarDatosPrueba()){
+            prueba.setClientesPorRegistrar(0);
+            prueba.setMaxCompras(0);
+            prueba.setMaxProductosComprados(0);
+            prueba.setPremiosPorPromocion(0);
+            prueba.setProductosPorPromocion(0);
+            prueba.setPromocionesPorEmpresa(0);
+            prueba.setTotalEmpresas(0);
+            return true;
+        }
+        else
+            return false;
     }//fin borrar datos prueba
     
 }//fin prueba service impl

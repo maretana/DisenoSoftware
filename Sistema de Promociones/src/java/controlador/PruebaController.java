@@ -38,28 +38,17 @@ public class PruebaController {
         return "/pruebas/index";
     }//fin mostrar la pagina de configuración
     
-    /**
-     * Muestra la página de configuración de las pruebas.
-     * @return La dirección del JSP que debe mostrar.
-     */
-    private String mostrarPaginaConfiguracion(Prueba prueba, Model model){
-        Reporte reporte = this._servicio.iniciarReporte();
-        model.addAttribute("prueba", prueba);
-        model.addAttribute("reporte", reporte);
-        return "/pruebas/index";
-    }//fin mostrar la pagina de configuración
-    
     @RequestMapping(value="/pruebas/llenardatos", method = RequestMethod.POST)
     public String llenarBaseDeDatos(Prueba prueba, Model model){
         if (this._servicio.llenarBase(prueba))
-            return this.mostrarPaginaConfiguracion(prueba, model);
+            return "redirect:/pruebas";
         else
             return "redirect:/error";
     }//fin llenar base de datos
     
     @RequestMapping(value="/pruebas/borrardatos")
-    public String borrarDatosPrueba(){
-        if(this._servicio.borrarDatosPrueba())
+    public String borrarDatosPrueba(Prueba prueba){
+        if(this._servicio.borrarDatosPrueba(prueba))
             return "redirect:/pruebas";
         else
             return "redirect:/error";

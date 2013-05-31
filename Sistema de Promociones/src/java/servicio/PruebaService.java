@@ -24,9 +24,10 @@ public interface PruebaService {
     
     /**
      * Borra los datos de prueba que fueron agregados a la BD.
+     * @param prueba Datos de prueba que se van a borrar.
      * @return Retorna <code>true</code> si logra borrar los datos o <code>false</code> en
      * caso contrario.
      */
-    public boolean borrarDatosPrueba();
+    public boolean borrarDatosPrueba(Prueba prueba);
     
 }//fin interface PruebaService
