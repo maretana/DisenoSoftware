@@ -14,7 +14,7 @@ public class Prueba {
     private int _maxProductosComprados;
     private int _maxDias;
     private int _clientesPorRegistrar;
-    private static final Prueba _instancia = new Prueba();
+    private static final Prueba INSTANCIA = new Prueba();
 
     private Prueba(){
         this._maxDias = 30;
@@ -101,7 +101,7 @@ public class Prueba {
     }//fin generar dias
 
     public static Prueba getInstance(){
-        return _instancia;
+        return INSTANCIA;
     }
     
 }//fin clase prueba
