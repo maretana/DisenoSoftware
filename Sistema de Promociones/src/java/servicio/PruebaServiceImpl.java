@@ -31,25 +31,28 @@ public class PruebaServiceImpl implements PruebaService{
     @Override
     public boolean llenarBase(Prueba prueba){
         if(this._prueba.llenarBase(prueba.getTotalEmpresas(), prueba.getPromocionesPorEmpresa(), prueba.getProductosPorPromocion(), prueba.getPremiosPorPromocion())){
-            boolean respuesta = true;
-            String empresa = "Empresa";
-            String nombre = "Cliente";
+            boolean respuesta = true;;
+            int cod = 0;
             int identificacion = 186429862;
             for(int i=0;i<prueba.getClientesPorRegistrar();i++){
                 Cliente cliente = new Cliente();
-                cliente.setNombre(nombre + i);
+                cliente.setNombre("Cliente" + i);
                 cliente.setApellido1("Apellido1");
                 cliente.setApellido2("Apellido2");
                 cliente.setIdentificacion(identificacion + "");
                 respuesta = this._prueba.registrarCliente(cliente);
-                int compras = prueba.generarInt(prueba.getMaxCompras());
+                int compras = prueba.generarInt(1,prueba.getMaxCompras());
                 for(int j=0;j<compras;j++){
-                    int dias = prueba.generarInt(prueba.getMaxDias());
-                    int comprados = prueba.generarInt(prueba.getMaxProductosComprados());
-                    String codigo = this._prueba.registrarNuevaCompra(j+(i*prueba.getClientesPorRegistrar())+"", identificacion + "", dias);
-                    String emp = empresa + (prueba.generarInt(prueba.getTotalEmpresas())-1);
-                    for (int k=0;k<comprados;k++)
-                        respuesta = this._prueba.ingresarDetalleCompra(codigo, emp, "Producto" + (prueba.generarInt(prueba.getProductosPorPromocion()*prueba.getPromocionesPorEmpresa())-1), prueba.generarInt(10));
+                    int dias = prueba.generarInt(1,prueba.getMaxDias());
+                    int comprados = prueba.generarInt(1,prueba.getMaxProductosComprados());
+                    String codigo = this._prueba.registrarNuevaCompra((cod +""), identificacion + "", dias);
+                    cod++;
+                    String empresa = "Empresa" + prueba.generarInt(0,prueba.getTotalEmpresas() - 1);
+                    for (int k=0;k<comprados;k++){
+                        String producto = "Producto" + prueba.generarInt(0, (prueba.getProductosPorPromocion() * prueba.getPromocionesPorEmpresa())-1);
+                        int cantidad = prueba.generarInt(1, 10);
+                        respuesta = this._prueba.ingresarDetalleCompra(codigo, empresa,producto, cantidad);
+                    }//fin for
                 }//fin for
                 identificacion++;
             }//fin for

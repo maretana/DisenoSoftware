@@ -118,7 +118,7 @@ public class PruebaPersistencia implements JDBCProperties{
         }//fin try
         catch (Exception e){
             System.err.println(e.getMessage());
-            System.err.println(pCodigo);
+            System.err.println(pProducto + " " + pEmpresa);
             try{
                 this._conexion.rollback();
             }//fin try
