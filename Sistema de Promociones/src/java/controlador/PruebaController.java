@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import servicio.PruebaService;
 
 /**
@@ -14,6 +15,7 @@ import servicio.PruebaService;
  * @author Mario Retana Rojas <201029799>
  */
 @Controller
+@SessionAttributes("prueba")
 public class PruebaController {
     
     private final PruebaService _servicio;
@@ -29,7 +31,7 @@ public class PruebaController {
      */
     @RequestMapping(value="/pruebas")
     public String mostrarPaginaConfiguracion(Model model){
-        Prueba prueba = new Prueba();
+        Prueba prueba = Prueba.getInstance();
         Reporte reporte = this._servicio.iniciarReporte();
         model.addAttribute("prueba", prueba);
         model.addAttribute("reporte", reporte);

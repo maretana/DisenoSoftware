@@ -14,8 +14,9 @@ public class Prueba {
     private int _maxProductosComprados;
     private int _maxDias;
     private int _clientesPorRegistrar;
+    private static final Prueba _instancia = new Prueba();
 
-    public Prueba(){
+    private Prueba(){
         this._maxDias = 30;
     }//fin constructor
 
@@ -99,4 +100,8 @@ public class Prueba {
         return pMin + (int)(Math.random() * ((pLimite - pMin) + 1));
     }//fin generar dias
 
+    public static Prueba getInstance(){
+        return _instancia;
+    }
+    
 }//fin clase prueba
