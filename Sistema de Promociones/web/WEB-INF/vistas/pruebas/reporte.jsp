@@ -8,7 +8,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%int i = 1;%>
+<%int i = 1;//usada para enumeracion de resultados%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -29,16 +29,20 @@
             <tr>
                 <td>Tiempo más largo</td>
                 <td>${reporte.tiempoMasLargo} ns</td>
-                <td>${reporte.tiempoMasLargo} ns</td>
-                <td>${reporte.tiempoMasLargo} ns</td>
+                <td>${reporte.tiempoMasLargo / 1000000} ms</td>
+                <td>${reporte.tiempoMasLargo / 1000000000} s</td>
             </tr>
             <tr>
                 <td>Tiempo más corto</td>
                 <td>${reporte.tiempoMasCorto} ns</td>
+                <td>${reporte.tiempoMasCorto / 1000000} ms</td>
+                <td>${reporte.tiempoMasCorto / 1000000000} s</td>
             </tr>
             <tr>
                 <td>Tiempo promedio</td>
                 <td>${reporte.tiempoPromedio} ns</td>
+                <td>${reporte.tiempoPromedio / 1000000} ms</td>
+                <td>${reporte.tiempoPromedio / 1000000000} s</td>
             </tr>
         </table>
         <br>
