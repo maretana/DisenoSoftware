@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.servlet.ModelAndView;
 import servicio.PruebaService;
 
 /**
@@ -53,5 +54,13 @@ public class PruebaController {
         else
             return "redirect:/error";
     }//fin borrar datos prueba
+    
+    @RequestMapping(value="/pruebas/reporte")
+    public ModelAndView ejecutarPruebas(Reporte reporte){
+        ModelAndView mav = new ModelAndView("/pruebas/reporte");
+        this._servicio.ejecutarPruebas(reporte);
+        mav.addObject("reporte", reporte);
+        return mav;
+    }//fin ejecutar pruebas
     
 }//fin pruebas controller

@@ -1,6 +1,12 @@
 package servicio;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 import modelo.Cliente;
+import modelo.HiloSimulacion;
 import modelo.Prueba;
 import modelo.Reporte;
 import org.springframework.stereotype.Service;
@@ -77,5 +83,28 @@ public class PruebaServiceImpl implements PruebaService{
         else
             return false;
     }//fin borrar datos prueba
+    
+    @Override
+    public void ejecutarPruebas(Reporte reporte){
+        ExecutorService executor = Executors.newFixedThreadPool(reporte.getUsuariosConectados());
+        int id = 186429862;
+        List<HiloSimulacion> hilos = new ArrayList<HiloSimulacion>();
+        for (int i=0;i<reporte.getUsuariosConectados();i++){
+            HiloSimulacion hilo = new HiloSimulacion(id+"");
+            hilos.add(hilo);
+            executor.execute(hilo);
+            id++;
+        }//fin for
+        executor.shutdown();
+        try {
+            executor.awaitTermination(1, TimeUnit.DAYS);
+        } catch (InterruptedException ex) {
+            System.err.println(ex.getMessage());
+        }
+        for (int i=0;i<hilos.size();i++){
+            reporte.getDuracionesConsulta().add(hilos.get(i).getTiempo());
+        }//fin for
+        reporte.calcularTiempos();
+    }//fin ejecutar pruebas
     
 }//fin prueba service impl

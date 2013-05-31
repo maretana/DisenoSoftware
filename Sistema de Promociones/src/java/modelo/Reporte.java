@@ -1,5 +1,8 @@
 package modelo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Esta clase contiene la informacion que sera puesta en el reporte.
  * @author Mario Retana Rojas 201029799
@@ -13,8 +16,14 @@ public class Reporte {
     private int _promocionesRegistradas;
     private int _productosRegistrados;
     private int _premiosRegistrados;
+    private int _usuariosConectados;
+    private long _tiempoMasCorto;
+    private long _tiempoMasLargo;
+    private long _tiempoPromedio;
+    private List<Long> _duracionesConsulta;
     
     public Reporte(){
+        this._duracionesConsulta = new ArrayList<Long>();
     }//fin constructor
 
     //<editor-fold defaultstate="collapsed" desc="Getters y Setters">
@@ -75,6 +84,62 @@ public class Reporte {
     public void setClientesRegistrados(int clientesRegistrados) {
         this._clientesRegistrados = clientesRegistrados;
     }
+    
+    public int getUsuariosConectados() {
+        return _usuariosConectados;
+    }
+
+    public void setUsuariosConectados(int usuariosConectados) {
+        this._usuariosConectados = usuariosConectados;
+    }
+    
+    public List<Long> getDuracionesConsulta() {
+        return _duracionesConsulta;
+    }
+    
+    public long getTiempoPromedio() {
+        return _tiempoPromedio;
+    }
+
+    public void setTiempoPromedio(long tiempoPromedio) {
+        this._tiempoPromedio = tiempoPromedio;
+    }
+
+
+    public long getTiempoMasLargo() {
+        return _tiempoMasLargo;
+    }
+
+    public void setTiempoMasLargo(long tiempoMasLargo) {
+        this._tiempoMasLargo = tiempoMasLargo;
+    }
+
+
+    public long getTiempoMasCorto() {
+        return _tiempoMasCorto;
+    }
+
+    public void setTiempoMasCorto(long tiempoMasCorto) {
+        this._tiempoMasCorto = tiempoMasCorto;
+    }
     //</editor-fold>
+    
+    /**
+     * Calcula el tiempo mas largo, el mas corto y el tiempo promedio.
+     */
+    public void calcularTiempos(){
+        this._tiempoMasCorto = this._duracionesConsulta.get(0);
+        this._tiempoMasLargo = this._duracionesConsulta.get(0);
+        long suma = this._duracionesConsulta.get(0);
+        for (int i=1;i<this._duracionesConsulta.size();i++){
+            long num = this._duracionesConsulta.get(i);
+            suma += num;
+            if (num > this._tiempoMasLargo)
+                this._tiempoMasLargo = num;
+            else if (num < this._tiempoMasCorto)
+                this._tiempoMasCorto = num;
+        }//fin for
+        this._tiempoPromedio = suma / this._duracionesConsulta.size();
+    }//fin calcular tiempos
 
 }//fin clase reporte

@@ -30,7 +30,7 @@
         <label>Premios registrados: </label> ${reporte.premiosRegistrados}
         <br>
         <br>
-        <spring:url value="pruebas/llenardatos.html" var="actionllenardatos" />
+        <spring:url value="/pruebas/llenardatos.html" var="actionllenardatos" />
         <spring:url value="/pruebas/borrardatos.html" var="borrardatos" />
         <form:form modelAttribute="prueba" method="post" action="${actionllenardatos}">
             <fieldset>
@@ -51,12 +51,24 @@
                 <form:input path="clientesPorRegistrar" title="Cantidad de clientes que se registran en la base"/>
                 <br>
                 <form:label path="maxCompras">Cantidad maxima de compras por cliente: </form:label>
-                <form:input path="maxCompras" title="Cada cliente hace entre 1 y el maximo de compras"/>
+                <form:input path="maxCompras" title="Cada cliente hace entre 1 y el máximo de compras"/>
                 <br>
                 <form:label path="maxProductosComprados">Cantidad maxima de productos diferentes por compra: </form:label>
-                <form:input path="maxProductosComprados" title="Cada cliente compra hasta este maximo de productos del mismo tipo en sus compras"/>
+                <form:input path="maxProductosComprados" title="Cada cliente compra hasta este máximo de productos en cada compra"/>
                 <br>
                 <form:button>Llenar Base de Datos</form:button> <a href="${borrardatos}" title="Esta accion no se puede deshacer">Borrar datos de la base</a>
+            </fieldset>
+        </form:form>
+        
+        <br>
+        <spring:url value="/pruebas/reporte.html" var="actionprueba" />
+        <form:form modelAttribute="reporte" method="post" action="${actionprueba}">
+            <fieldset>
+                <legend>Prueba de Rendimiento</legend>
+                <form:label path="usuariosConectados">Usuarios simultáneos: </form:label>
+                <form:input path="usuariosConectados" title="Usuarios conectados al mismo tiempo durante la simulación." />
+                <br>
+                <form:button>Ejecutar prueba</form:button>
             </fieldset>
         </form:form>
     </body>

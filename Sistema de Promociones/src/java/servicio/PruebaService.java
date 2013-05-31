@@ -30,4 +30,11 @@ public interface PruebaService {
      */
     public boolean borrarDatosPrueba(Prueba prueba);
     
+    /**
+     * Simula la cantidad de usuarios conectados que diga el reporte y hace la consulta de puntos
+     * a la BD. Guarda los tiempos de ejecucion en el reporte.
+     * @param reporte 
+     */
+    public void ejecutarPruebas(Reporte reporte);
+    
 }//fin interface PruebaService
