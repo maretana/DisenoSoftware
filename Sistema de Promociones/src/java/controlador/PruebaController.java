@@ -16,7 +16,7 @@ import servicio.PruebaService;
  * @author Mario Retana Rojas <201029799>
  */
 @Controller
-@SessionAttributes("prueba")
+@SessionAttributes({"prueba","reporte"})
 public class PruebaController {
     
     private final PruebaService _servicio;
@@ -57,10 +57,19 @@ public class PruebaController {
     
     @RequestMapping(value="/pruebas/reporte")
     public ModelAndView ejecutarPruebas(Reporte reporte){
+        int usuarios = reporte.getUsuariosConectados();
+        Reporte nuevo = this._servicio.iniciarReporte();
+        nuevo.setUsuariosConectados(usuarios);
         ModelAndView mav = new ModelAndView("/pruebas/reporte");
-        this._servicio.ejecutarPruebas(reporte);
-        mav.addObject("reporte", reporte);
+        this._servicio.ejecutarPruebas(nuevo);
+        mav.addObject("reporte", nuevo);
         return mav;
     }//fin ejecutar pruebas
+    
+    @RequestMapping(value="/pruebas/reporte/exportar", method = RequestMethod.POST)
+    public String exportarReporteExcel(Reporte reporte){
+        this._servicio.exportarReporteExcel(reporte);
+        return "redirect:/pruebas";
+    }//fin exportar reporte a excel
     
 }//fin pruebas controller

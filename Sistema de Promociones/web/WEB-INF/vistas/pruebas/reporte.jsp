@@ -4,10 +4,10 @@
     Author     : Mario Retana Rojas <201029799>
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%int i = 1;//usada para enumeracion de resultados%>
 <!DOCTYPE html>
 <html>
@@ -45,6 +45,11 @@
                 <td>${reporte.tiempoPromedio / 1000000000} s</td>
             </tr>
         </table>
+        <br>
+        <spring:url value="/pruebas/reporte/exportar.html" var="exportarexcel" />
+        <form method="post" action="${exportarexcel}" >
+            <input type="submit" value="Descargar reporte"/>
+        </form>
         <br>
         <table>
             <tr>

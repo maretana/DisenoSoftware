@@ -36,5 +36,11 @@ public interface PruebaService {
      * @param reporte 
      */
     public void ejecutarPruebas(Reporte reporte);
+
+    /**
+     * Escribe un archivo de excel
+     * @param reporte Reporte que va a ser exportado.
+     */
+    public void exportarReporteExcel(Reporte reporte);
     
 }//fin interface PruebaService

@@ -1,7 +1,9 @@
 package servicio;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
@@ -9,6 +11,7 @@ import modelo.Cliente;
 import modelo.HiloSimulacion;
 import modelo.Prueba;
 import modelo.Reporte;
+import net.sf.jxls.transformer.XLSTransformer;
 import org.springframework.stereotype.Service;
 import persistencia.PruebaPersistencia;
 import persistencia.ReportePersistencia;
@@ -87,13 +90,13 @@ public class PruebaServiceImpl implements PruebaService{
     @Override
     public void ejecutarPruebas(Reporte reporte){
         ExecutorService executor = Executors.newFixedThreadPool(reporte.getUsuariosConectados());
-        int id = 186429862;
+        int id = 0;
         List<HiloSimulacion> hilos = new ArrayList<HiloSimulacion>();
         for (int i=0;i<reporte.getUsuariosConectados();i++){
-            HiloSimulacion hilo = new HiloSimulacion(id+"");
+            HiloSimulacion hilo = new HiloSimulacion((186429862 + id) + "");
             hilos.add(hilo);
             executor.execute(hilo);
-            id++;
+            id = (id + 1) % reporte.getClientesRegistrados();
         }//fin for
         executor.shutdown();
         try {
@@ -106,5 +109,20 @@ public class PruebaServiceImpl implements PruebaService{
         }//fin for
         reporte.calcularTiempos();
     }//fin ejecutar pruebas
+
+    @Override
+    public void exportarReporteExcel(Reporte reporte) {
+        String plantilla = "C:\\Users\\Mario\\Desktop\\TEC\\VII Semestre, 2013\\Diseño de Software\\Proyecto 2\\Repositorio\\Sistema de Promociones\\src\\resources\\excel\\plantilla.xls";
+        String reportexls = "C:\\Users\\Mario\\Desktop\\TEC\\VII Semestre, 2013\\Diseño de Software\\Proyecto 2\\Repositorio\\Sistema de Promociones\\src\\resources\\excel\\reporte.xls";
+        Map beans = new HashMap();
+        beans.put("reporte", reporte);
+        XLSTransformer transformer = new XLSTransformer();
+        try {
+            transformer.transformXLS(plantilla, beans, reportexls);
+        } catch (Exception ex) {
+            System.err.println(ex.getMessage());
+        }//fin try - catch
+        
+    }//fin exportar reporte a excel
     
 }//fin prueba service impl
